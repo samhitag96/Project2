@@ -6,12 +6,14 @@
 
 <body>
 
-	<div id="page-wrap">
+	<div id="page">
 
 		<h1>Quiz</h1>
-		
+		 
 		<form action="grade.php" method="post" id="quiz">
-		
+				
+		Name: <input type="text" name="user">
+                        
             <ol>
             
                 <li>
