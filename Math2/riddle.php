@@ -3,8 +3,7 @@
 	$r_answer = "A";
 	$r_user_answer = "";
 	
-	echo "r_answer: " . $r_answer . "<br>";
-	echo  "r_user_answer: " . $r_user_answer . "<br>";
+	
 ?>
 
 <html>
@@ -15,7 +14,7 @@
 		<div id="page-wrap">
 		<h1>Riddle Me This</h1>
 		
-		<form action="solution.php" method="post">
+		<form action="riddle_solution.php" method="post">
 		
             <ol>
             
