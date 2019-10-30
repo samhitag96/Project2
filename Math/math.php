@@ -28,7 +28,8 @@
 		<form action="solution.php" method="post">
 		
 			<label for="inputAnswer">Answer: </label>
-			<input type="text" name="user_answer" id="inputAnswer" value="<?php echo $user_answer; ?>">
+			<input type="text" name="user_answer" value="<?php echo $user_answer; ?>">
+			<input type="hidden" name="answer" value="<?php echo $answer; ?>">
 			<input type="submit" value="Submit">
 			
 		</form>
