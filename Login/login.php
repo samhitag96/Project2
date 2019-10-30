@@ -25,7 +25,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
     <h1> Welcome To The Trivia Game! </h1> </div>
     <div id="login">
    <h3> Let's Get Started! </h3> 
-   <form action="index.php" method="post">
+   <form action="math.php" method="post">
 	<label for="username"> Username </label>
    <input type="text" id="user_name" name="name"/> <br><br>
    <input type="submit" id= "button" value="Begin">
