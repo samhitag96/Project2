@@ -8,7 +8,7 @@ if(isset($_SESSION['timeout']) && ($_SESSION['timeout'] > $timeout)) {
     $duration = time() - (int)$_SESSION['timeout'];
     if($duration > $timeout) {
         //goes to endgame
-        header("location: ./endgame.html");
+        header("location: ./endgame.php");
     }
     else{
         echo  "you have $duration seconds left"; 
