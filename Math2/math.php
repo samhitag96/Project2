@@ -1,4 +1,8 @@
 <?php
+	session_start();
+?>
+
+<?php
 	
 	$riddle_counter = "";
 	$correct = 0;
@@ -9,8 +13,9 @@
 	$num2 = rand(1,10);
 	$num3 = rand(0,2);
 	
-	$name = $_POST['name'];
-	setcookie($name, $correct, time() + 20, "/");
+	$_SESSION["name"] = $_POST["name"];
+	
+	
 	
 	echo "<div id=\"first\">  <br><br>";
 	echo $num1 . $operator[$num3] . $num2 . " = ";
@@ -45,7 +50,6 @@
 			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
 			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
 			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
-			<input type="hidden" name="name" value="<?php echo $name; ?>">
 			<input type="submit" name= "submit" value="Submit Answer">
 			
 		</form>

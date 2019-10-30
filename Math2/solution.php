@@ -1,22 +1,28 @@
 <?php
-session_start();
+	session_start();
 ?>
+
 <?php
 	
-	//answers and countera
-	$riddle_counter = 0;
-	$user_answer = "";
-	$answer = 0;
-	$correct = 0;
-	$incorrect = 0;
-	$_SESSION["user"] = $_POST["name"];
+	$score = $_SESSION["score"];
+	
+	//answers and counter
+	$riddle_counter = $_POST['riddle_counter'];
+	$user_answer = $_POST['user_answer'];
+	$answer = $_POST['answer'];
+	$correct = $_POST['correct'];
+	$incorrect = $_POST['incorrect'];
 	
 	if(isset($_POST['continue'])) {
-		$correct++;
+		$r_answer = $_POST['r_answer'];
+		$r_user_answer = $_POST['r_user_answer'];
+		//$score++;
 		//echo "<br><br>" . $correct . " correct" . "<br><br>";
 	}
 	
+	
 	//user riddle answer
+	
 	
 	$page = array("riddle.php", "riddle2.php","riddle3.php", "riddle4.php");
 	$num = rand(1,4);
@@ -25,24 +31,26 @@ session_start();
 	
 	if($user_answer == $answer) {
 		$riddle_counter++;
-		$correct++;
+		$_SESSION['score']++;
 		
-		echo "Score: ". $correct . "<br><br>";
+		
+		echo "Score: ". $_SESSION['score'] . "<br><br>";
 		echo "<div id=\"first\">";
 		echo "<br><br>Correct!<br><br>";
 			
-		if($riddle_counter >= 3) {
+		/*if($riddle_counter >= 3) {
 			$riddle_counter = 0;
-				page($page, $num);
-		}
+			header("Location: riddle.php");
+			exit();
+				//page($page, $num);
+		}*/
 	}
 	else {
 		echo "Game Over <br><br>";
-			echo "<span id=\"score\">Score: </span>" . $correct .  "<br><br>";
+			echo "<span id=\"score\">Score: </span>" . $score .  "<br><br>";
 			header("Location: gameover.php");
 			exit();
 	}
-	
 	
 	
 	function page($page, $num) {
@@ -105,7 +113,6 @@ echo "</div>";
 			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
 			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
 			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
-			<input type="hidden" name="name" value="name">
 			<input type="submit" name= "submit" value="Submit Answer">
 			
 		</form>
