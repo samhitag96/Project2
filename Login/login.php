@@ -1,14 +1,11 @@
+  
 <?php
-session_start();
+//session_start();
+$name="user";
 
-$username="user";
-$password="password";
-
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
-    header("Location: math.php");
-}
-
-
+/*if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
+    header("Location: solution.php");
+}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,9 +23,10 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
     <div id="login">
    <h3> Let's Get Started! </h3> 
    <form action="math.php" method="post">
-	<label for="username"> Username </label>
-   <input type="text" id="user_name" name="name"/> <br><br>
-   <input type="submit" id= "button" value="Begin">
+		<label for="username"> Username </label>
+		<input type="hidden" name="name" value="<?php echo $name; ?>">
+	   <input type="text" id="name" name="name"/> <br><br>
+	   <input type="submit" id= "button" value="Begin">
 </form>
 </div>
 </div>
