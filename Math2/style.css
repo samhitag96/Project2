@@ -4,6 +4,15 @@
 	font-weight: bold;
 }
 
+#over {
+	margin-left: 40%;
+	text-align: center;
+	background-color: white;
+	width: 40%;
+	border:2px solid #ccc; 
+	border-radius: 5px;
+}
+
 #first {
 	margin-left: 29%;
 	text-align: center;

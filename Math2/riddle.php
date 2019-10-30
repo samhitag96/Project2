@@ -47,6 +47,7 @@
                           
             </ol>
 			<input type="hidden" name="r_answer" value="<?php echo $r_answer; ?>">
+			<input type="hidden" name="name" value="<?php echo $name; ?>">
             <input type="submit" name="submit_riddle" value="Submit Riddle" />
 		
 		</form>

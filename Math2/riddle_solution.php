@@ -6,6 +6,7 @@
 	$user_answer = "";
 	$answer = "";
 	
+	
 	$o_count = 0;
 	$r_answer = $_POST['r_answer'];
 	$r_user_answer = $_POST['r_user_answer'];
@@ -16,7 +17,8 @@
 		$correct++;
 	}
 	else {
-		echo "Game Over <br><br>";
+		header("Location: gameover.php");
+		exit();
 		
 	}
 	
@@ -43,6 +45,7 @@
 			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
 			<input type="hidden" name="answer" value="<?php echo $answer; ?>">
 			<input type="hidden" name="user_answer" value="<?php echo $user_answer; ?>">
+		
 			
             <input type="submit" name="continue" value="Continue" />
 		

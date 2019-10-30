@@ -1,12 +1,13 @@
 <?php
 
+	
 	//answers and countera
 	$riddle_counter = $_POST['riddle_counter'];
 	$user_answer = $_POST['user_answer'];
 	$answer = $_POST['answer'];
 	$correct = $_POST['correct'];
 	$incorrect = $_POST['incorrect'];
-	
+	$name = $_REQUEST['name'];
 	
 	if(isset($_POST['continue'])) {
 		$correct++;
@@ -23,6 +24,7 @@
 	if($user_answer == $answer) {
 		$riddle_counter++;
 		$correct++;
+		setcookie($name, $correct, time() + 9999999);
 		
 		echo "Score: ". $correct . "<br><br>";
 		echo "<div id=\"first\">";
@@ -35,10 +37,12 @@
 	}
 	else {
 		echo "Game Over <br><br>";
-					echo "<span id=\"score\">Score: </span>" . $correct .  "<br><br>";
+			echo "<span id=\"score\">Score: </span>" . $correct .  "<br><br>";
+			header("Location: gameover.php");
+			exit();
 	}
 	
-
+	
 	
 	function page($page, $num) {
 	  switch ($num) {
@@ -101,7 +105,16 @@ echo "</div>";
 			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
 			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
 			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
+			<input type="hidden" name="name" value="name">
 			<input type="submit" name= "submit" value="Submit Answer">
+			
+		</form>
+		<br><br>
+		
+		<form action="gameover.php" method="post">
+		
+			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
+			<input type="submit" name= "submit" value="End Game">
 			
 		</form>
 	</body>
