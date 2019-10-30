@@ -4,17 +4,17 @@
 	$answer = $_POST['answer'];
 	$correct = "";
 	
-	echo $user_answer;
-	echo $answer;
+	echo "Your answer: " . $user_answer . "<br>";
+	echo "Correct answer: " . $answer . "<br>";
 	
-	/*
+	
 	if ($user_answer == $answer) {
-		echo "correct!";
+		echo "correct! <br>";
 		$correct++;
 	}
 	else {
-		echo "incorrect";
+		echo "incorrect <br>";
 	}
 		
-		*/
+		
 ?>
