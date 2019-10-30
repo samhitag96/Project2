@@ -14,8 +14,6 @@
 	}
 	
 	//user riddle answer
-	//$r_answer = $_POST['r_answer'];
-	//$r_user_answer = $_POST['r_user_answer'];
 	
 	$page = array("riddle.php", "riddle2.php","riddle3.php", "riddle4.php");
 	$num = rand(1,4);
@@ -23,10 +21,12 @@
 	//echo "Correct answer: " . $answer . "<br>";
 	
 	if($user_answer == $answer) {
-		echo "correct! <br><br>";
 		$riddle_counter++;
 		$correct++;
-		echo "<br><br>" . $correct . " correct" . "<br><br>";
+		
+		echo "Score: ". $correct . "<br><br>";
+		echo "<div id=\"first\">";
+		echo "<br><br>Correct!<br><br>";
 			
 		if($riddle_counter >= 3) {
 			$riddle_counter = 0;
@@ -35,7 +35,7 @@
 	}
 	else {
 		echo "Game Over <br><br>";
-					echo "<br><br>" . $correct . " correct" . "<br><br>";
+					echo "<span id=\"score\">Score: </span>" . $correct .  "<br><br>";
 	}
 	
 
@@ -68,7 +68,7 @@
 
 	echo $num1 . $operator[$num3] . $num2 . " = ";
 	$answer = operator($num1, $num2, $operator[$num3]);
-	//echo $answer;
+	echo "<br><br>";
 	
 	function operator($num1, $num2, $operator) {
 	  switch ($operator) {
@@ -84,10 +84,13 @@
 ?>
 
 <?php
-
+echo "</div>";
 ?>
 
 <html>
+	<head>
+	<link href="style.css" rel="stylesheet">
+	</head>
 	<body>
 		<br><br><br>
 		<form action="solution.php" method="post">

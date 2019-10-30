@@ -8,10 +8,13 @@
 	$num1 = rand(1,10);
 	$num2 = rand(1,10);
 	$num3 = rand(0,2);
-
+	
+	echo "<div id=\"first\">  <br><br>";
 	echo $num1 . $operator[$num3] . $num2 . " = ";
 	$answer = operator($num1, $num2, $operator[$num3]);
-
+	echo "<br><br>";
+	echo "</div>";
+	echo "<br><br>";
 	
 	function operator($num1, $num2, $operator) {
 	  switch ($operator) {
@@ -27,6 +30,9 @@
 ?>
 
 <html>
+	<head>
+	<link href="style.css" rel="stylesheet">
+	</head>
 	<body>
 		<form action="solution.php" method="post">
 		

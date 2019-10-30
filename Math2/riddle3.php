@@ -8,6 +8,7 @@
 
 <html>
 	<head>
+	<link href="style.css" rel="stylesheet">
 	</head>
 	
 	
@@ -26,22 +27,22 @@
 					Immediately, the police arrest the murdered. Who did it and how did the police know?
 					</h3>
                     
-                    <div>
+                    <div id="div">
                         <input type="radio" name="r_user_answer" id="question-1-answers-A" value="A" />
                         <label for="question-1-answers-A">A) The maid did it. There is no mail on Sundays </label>
                     </div>
                     
-                    <div>
+                    <div id="div">
                         <input type="radio" name="r_user_answer" id="question-1-answers-B" value="B" />
                         <label for="question-1-answers-B">B) The wife did it. How would she know what everyone else was doing?</label>
                     </div>
                     
-                    <div>
+                    <div id="div">
                         <input type="radio" name="r_user_answer" id="question-1-answers-C" value="C" />
                         <label for="question-1-answers-C">C) The butler did it. Cleaning the closet was a cover up</label>
                     </div>
                     
-                    <div>
+                    <div id="div">
                         <input type="radio" name="r_user_answer" id="question-1-answers-D" value="D" />
                         <label for="question-1-answers-D">D) The gardener did it. You can’t pick vegetables on a Sunday morning.</label>
                     </div>
