@@ -19,7 +19,7 @@
 		$file = "leaderboard.txt";
 		//add session to file	  
 		if(isset($_SESSION["name"]) && isset($_SESSION["score"])) {
-			$write = ($_SESSION["name"] . "," . $_SESSION["score"]);                        	
+			$write = ($_SESSION["score"] . "," . $_SESSION["name"]);                        	
 			$newfile = file_get_contents($file);
 			$newfile .= $write . "\n";
 			file_put_contents($file, $newfile);
@@ -29,14 +29,28 @@
 		
 		
 		//print out file data
-			$dataArray = explode("\n", file_get_contents($file));
+		    $myFile = file_get_contents($file);
+			$dataArray = explode("\n", $myFile);
+			echo "<table>";
+			echo "<tr>";
+			echo "<th> Name </th>"; 
+			echo "<th> Score </th>";
+			echo "</tr>";
+            
+			rsort($dataArray);
 			for($i=0; $i<sizeof($dataArray); $i++) {
-			echo $dataArray[$i] . "<br>";
-			}	
+			$fileNames = explode(",", $dataArray[$i]);
+			$location = $i + 1;
+			echo "<tr>";
+			echo "<td>" . $fileNames[0]; "</td>";
+			echo "<td>" . $fileNames[1]; "</td>";
+			echo "</tr>";
+		
+			}
+				
 	?>
 	
-	<table>
-	</table>
+	
 		
 	<?php
 		session_destroy();
