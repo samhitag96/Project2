@@ -1,8 +1,11 @@
+<?php
+	session_start();
+?>
+
 <?php 
 
-	$r_answer = "A";
+	$_SESSION["r_answer"] = "A";
 	$r_user_answer = "";
-	
 	
 ?>
 
@@ -17,7 +20,7 @@
 		<div id="page-wrap">
 		<h1>Riddle Me This</h1>
 		
-		<form action="riddle_solution.php" method="post">
+		<form action="solution.php" method="post">
 		
             <ol>
             
@@ -50,7 +53,6 @@
                           
             </ol>
     
-			<input type="hidden" name="r_answer" value="<?php echo $r_answer; ?>">
             <input type="submit" name="submit_riddle" value="Submit Riddle" />
 		
 		</form>

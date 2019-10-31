@@ -1,20 +1,15 @@
 <?php
-	
-	$riddle_counter = "";
-	$correct = "";
-	$incorrect = "";
-	$user_answer = "";
-	$answer = "";
+	session_start();
+?>
+
+<?php
 	
 	
-	$o_count = 0;
-	$r_answer = $_POST['r_answer'];
-	$r_user_answer = $_POST['r_user_answer'];
+	$_SESSION["r_user_answer"] = $_POST['r_user_answer'];
 	
-	if ($r_answer == $r_user_answer) {
+	if ($_SESSION["r_user_answer"] == $_SESSION["r_answer"]) {
 		echo "correct! <br><br>";
-		$o_count++;
-		$correct++;
+		$_SESSION["score"]++;
 	}
 	else {
 		header("Location: gameover.php");
@@ -38,14 +33,6 @@
 		<div id="page-wrap">
 		
 		<form action="solution.php" method="post">
-    
-			<input type="hidden" name="o_count" value="<?php echo $o_count; ?>">
-			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
-			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
-			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
-			<input type="hidden" name="answer" value="<?php echo $answer; ?>">
-			<input type="hidden" name="user_answer" value="<?php echo $user_answer; ?>">
-		
 			
             <input type="submit" name="continue" value="Continue" />
 		

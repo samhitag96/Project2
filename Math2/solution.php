@@ -1,47 +1,54 @@
 <?php
+	session_start();
+?>
 
+<?php
 	
-	//answers and countera
-	$riddle_counter = $_POST['riddle_counter'];
-	$user_answer = $_POST['user_answer'];
-	$answer = $_POST['answer'];
-	$correct = $_POST['correct'];
-	$incorrect = $_POST['incorrect'];
-	$name = $_REQUEST['name'];
+	$user_answer = $_SESSION["user_answer"];
+	$score = $_SESSION["score"];
 	
-	if(isset($_POST['continue'])) {
-		$correct++;
-		//echo "<br><br>" . $correct . " correct" . "<br><br>";
+	if(isset($_POST['submit'])){
+		$_SESSION["user_answer"] = $_POST["user_answer"];
+	}
+	else if(isset($_POST['submit_riddle'])) {
+		$_SESSION["r_user_answer"] = $_POST['r_user_answer'];
+		
+		if ($_SESSION["r_user_answer"] == $_SESSION["r_answer"]){
+			$_SESSION['score']++;
+		
+		}
+		else {
+		echo "Game Over <br><br>";
+			echo "<span id=\"score\">Score: </span>" . $_SESSION['score'] .  "<br><br>";
+			header("Location: gameover.php");
+			exit();
+		}
 	}
 	
-	//user riddle answer
 	
 	$page = array("riddle.php", "riddle2.php","riddle3.php", "riddle4.php");
 	$num = rand(1,4);
-	//echo "Your answer: " . $user_answer . "<br>";
-	//echo "Correct answer: " . $answer . "<br>";
 	
-	if($user_answer == $answer) {
-		$riddle_counter++;
-		$correct++;
-		setcookie($name, $correct, time() + 9999999);
+	
+	if($_SESSION["user_answer"] == $_SESSION["answer"]) {
+		$_SESSION["riddle_counter"]++;
+		$_SESSION['score']++;
 		
-		echo "Score: ". $correct . "<br><br>";
+		echo "Score: ". $_SESSION['score'] . "<br><br>";
 		echo "<div id=\"first\">";
 		echo "<br><br>Correct!<br><br>";
 			
-		if($riddle_counter >= 3) {
-			$riddle_counter = 0;
+		if($_SESSION["riddle_counter"] >= 3) {
+			$_SESSION["riddle_counter"] = 0;
 				page($page, $num);
 		}
 	}
 	else {
 		echo "Game Over <br><br>";
-			echo "<span id=\"score\">Score: </span>" . $correct .  "<br><br>";
+			echo "<span id=\"score\">Score: </span>" . $_SESSION['score'] .  "<br><br>";
 			header("Location: gameover.php");
 			exit();
 	}
-	
 	
 	
 	function page($page, $num) {
@@ -64,14 +71,13 @@
 
 <?php
 	
-	$user_answer = "";
 	$operator = array("+", "-", "*");
 	$num1 = rand(1,10);
 	$num2 = rand(1,10);
 	$num3 = rand(0,2);
 
 	echo $num1 . $operator[$num3] . $num2 . " = ";
-	$answer = operator($num1, $num2, $operator[$num3]);
+	$_SESSION["answer"] = operator($num1, $num2, $operator[$num3]);
 	echo "<br><br>";
 	
 	function operator($num1, $num2, $operator) {
@@ -101,11 +107,6 @@ echo "</div>";
 		
 			<label for="inputAnswer">Answer: </label>
 			<input type="text" name="user_answer" value="<?php echo $user_answer; ?>">
-			<input type="hidden" name="answer" value="<?php echo $answer; ?>">
-			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
-			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
-			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
-			<input type="hidden" name="name" value="name">
 			<input type="submit" name= "submit" value="Submit Answer">
 			
 		</form>
@@ -113,7 +114,6 @@ echo "</div>";
 		
 		<form action="gameover.php" method="post">
 		
-			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
 			<input type="submit" name= "submit" value="End Game">
 			
 		</form>
