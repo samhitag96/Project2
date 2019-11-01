@@ -143,6 +143,10 @@ th, tr, td  {
 	align-text: center;
 }
 
+td {
+	padding-left: 20%;
+}
+
 input[type=password]:focus {
     border-color:#333;
 }

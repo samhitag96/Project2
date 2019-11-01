@@ -1,3 +1,4 @@
+  
 <?php
 	session_start();
 ?>
@@ -6,12 +7,15 @@
 	
 	$user_answer = $_SESSION["user_answer"];
 	$score = $_SESSION["score"];
+	$_SESSION['time1'] = time();
 	
 	if(isset($_POST['submit'])){
 		$_SESSION["user_answer"] = $_POST["user_answer"];
+		$_SESSION['last_submit'] = time();
 	}
 	else if(isset($_POST['submit_riddle'])) {
 		$_SESSION["r_user_answer"] = $_POST['r_user_answer'];
+		$_SESSION['last_submit'] = time();
 		
 		if ($_SESSION["r_user_answer"] == $_SESSION["r_answer"]){
 			$_SESSION['score']++;
@@ -75,7 +79,6 @@
 	$num1 = rand(1,10);
 	$num2 = rand(1,10);
 	$num3 = rand(0,2);
-
 	echo $num1 . $operator[$num3] . $num2 . " = ";
 	$_SESSION["answer"] = operator($num1, $num2, $operator[$num3]);
 	echo "<br><br>";
@@ -117,6 +120,18 @@ echo "</div>";
 			<input type="submit" name= "submit" value="End Game">
 			
 		</form>
+		<?php
+//session_start();
+if(isset($_SESSION['submit']) && isset($_SESSION['submit_riddle'])){
+  if((time() - $_SESSION['last_submit']) > 3){
+	  header("location: gameover.php");
+  }
+  else{
+	  $_SESSION['last_submit'] = time();
+  }
+}
+?>
+		
 	</body>
 
 </html>

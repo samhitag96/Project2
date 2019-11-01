@@ -1,6 +1,1 @@
 Player1,3
-Player2,2
-Player3,3
-Player4,3
-Player5,1
-Player6,9
