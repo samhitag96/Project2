@@ -1,50 +1,40 @@
+  
 <?php
-	
-	$riddle_counter = "";
-	$correct = 0;
-	$incorrect = "";
-	$user_answer = "";
-	$operator = array("+", "-", "*");
-	$num1 = rand(1,10);
-	$num2 = rand(1,10);
-	$num3 = rand(0,2);
-	
-	echo "<div id=\"first\">  <br><br>";
-	echo $num1 . $operator[$num3] . $num2 . " = ";
-	$answer = operator($num1, $num2, $operator[$num3]);
-	echo "<br><br>";
-	echo "</div>";
-	echo "<br><br>";
-	
-	function operator($num1, $num2, $operator) {
-	  switch ($operator) {
-		case '+':
-		  return $num1 + $num2;
-		case '-':
-		  return $num1 - $num2;
-		case '*':
-		  return $num1 * $num2;
-		}
-	}	
-	
+	session_start();
+
+/*if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
+    header("Location: solution.php");
+}*/
 ?>
 
-<html>
-	<head>
-	<link href="style.css" rel="stylesheet">
-	</head>
-	<body>
-		<form action="solution.php" method="post">
-		
-			<label for="inputAnswer">Answer: </label>
-			<input type="text" name="user_answer" value="<?php echo $user_answer; ?>">
-			<input type="hidden" name="answer" value="<?php echo $answer; ?>">
-			<input type="hidden" name="correct" value="<?php echo $correct; ?>">
-			<input type="hidden" name="incorrect" value="<?php echo $incorrect; ?>">
-			<input type="hidden" name="riddle_counter" value="<?php echo $riddle_counter; ?>">
-			<input type="submit" name= "submit" value="Submit Answer">
-			
-		</form>
-	</body>
+<?php
 
+	$_SESSION["name"] = "";
+	$_SESSION["score"] = "";
+	$name = "";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="loginstyle.css" rel="stylesheet">
+<title> Login Page </title>
+</head>
+<body>
+    <div id="main">
+		
+		<div id="title"> <h1> Welcome To Math Mania! </h1> </div>
+		
+		<div id="login">
+		   <h3> Let's Get Started! </h3> 
+		   <form action="math.php" method="post">
+				<label for="username"> Username </label>
+				<input type="text" id="name" name="name" value="<?php echo $name; ?>">
+				<input type="submit" id= "button" value="Begin">
+			</form>
+		</div>
+	</div>
+	
+
+</body>
 </html>

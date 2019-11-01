@@ -1,0 +1,76 @@
+*{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#main{
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#login{
+    
+    width: 25%;
+    overflow:hidden;
+    margin: 10em;
+    margin-right: 10em;
+    padding: 2em;
+    margin-right: m;
+    background-color: #F2DB99;
+    padding-left: 2em;
+	 border-radius: 5px;
+}
+
+#logo{
+    float: left;
+    width: 100%;
+    overflow: auto;
+    background-color:white;
+    background-repeat: repeat-x;
+}
+
+input[type=text] {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+input[type=password] {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=password]:focus {
+    border-color:#333;
+}
+#title{
+    
+    position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#button{
+    width: 60px;
+    height: 30px;
+    background-color:#ccc;
+}
+#button.hover{
+    background-color: #ccc;
+}

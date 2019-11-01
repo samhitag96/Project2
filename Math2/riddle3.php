@@ -28,7 +28,7 @@
                 
                     <h3>A man is found murdered on a Sunday morning. His wife calls the police, who question the 
 					wife and the staff, and are given the following alibis: the wife says she was sleeping, the butler was cleaning the closet, the gardener was picking vegetables, the maid was getting the mail, and the cook was preparing breakfast.
-					Immediately, the police arrest the murdered. Who did it and how did the police know?
+					Immediately, the police arrested the murderer. Who did it and how did the police know?
 					</h3>
                     
                     <div id="div">
